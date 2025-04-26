@@ -1,0 +1,42 @@
+{
+  "BLE": {
+    "device_name": "BLE-UART-Gateway",
+    "role": "server",  // "server" or "client"
+    "advertising_interval": 100,
+    "connection_interval": 50,
+    "mtu_size": 128,
+    "security_mode": "just_works",
+    "tx_power": 0,
+    "advertising_timeout": 30,
+    "server": {
+      "services": [
+        {
+          "uuid": "12345678-1234-5678-1234-56789abcdef0",
+          "characteristics": [
+            {
+              "uuid": "abcd1234-5678-1234-5678-abcdef123456",
+              "properties": ["read", "write", "notify"],
+              "permissions": "encrypted"
+            }
+          ]
+        }
+      ]
+    },
+    "client": {
+      "scan_interval": 50,
+      "scan_window": 20,
+      "filter_policy": "uuid",
+      "connection_retry_policy": 3
+    }
+  },
+  "UART": {
+    "baud_rate": 115200,
+    "data_bits": 8,
+    "parity": "none",  // "none", "even", "odd"
+    "stop_bits": 1,    // 1 or 2
+    "flow_control": "none",  // "none", "rts/cts"
+    "timeout": 1000,         // Timeout in milliseconds
+    "rx_buffer_size": 1024,  // RX buffer size in bytes
+    "tx_buffer_size": 1024   // TX buffer size in bytes
+  }
+}
